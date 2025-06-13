@@ -1,17 +1,21 @@
-package com.example.petClinic;
+package com.fhi.pet_clinic;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ClinicService {
-    private final ClinicRepository clinicRepository;
-    public ClinicService(ClinicRepository clinicRepository) {
+public class PetClinicService 
+{
+    private final PetClinicRepository clinicRepository;
+
+    public PetClinicService(PetClinicRepository clinicRepository) {
         this.clinicRepository = clinicRepository;
     }
 
     @Transactional
-    public void createClinic() {
+    public void createClinic() 
+    {
         PetClinic petClinic = new PetClinic();
         petClinic.setName("Happy Paws PetClinic");
 
@@ -25,8 +29,8 @@ public class ClinicService {
 
         petClinic.setCustomers(List.of(customer1));
 
-        // Relationships are not properly set yet
-        // Devs must set the bidirectional links and fix cascading
+        // TODO : Relationships are not properly set yet
+        //         You must set the bidirectional links and fix cascading
 
         clinicRepository.save(petClinic);
     }
